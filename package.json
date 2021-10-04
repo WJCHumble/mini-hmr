@@ -1,0 +1,26 @@
+{
+  "name": "mini-hmr",
+  "version": "1.0.0",
+  "description": "Vite is very popular, so I created this repo, which shows how hmr works in vite.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WJCHumble/mini-hmr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WJCHumble/mini-hmr/issues"
+  },
+  "homepage": "https://github.com/WJCHumble/mini-hmr#readme",
+  "dependencies": {
+    "ws": "^8.2.3"
+  }
+}
