@@ -6,6 +6,12 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	111
 </body>
+<script>
+const socket = new WebSocket("wss://localhost:3000", "min-hmr")
+socket.addEventListener("message", async ({ data }) => {
+	console.log(JSON.parse(data))
+})
+</script>
 </html>

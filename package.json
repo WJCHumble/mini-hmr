@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/WJCHumble/mini-hmr#readme",
   "dependencies": {
+    "chokidar": "^3.5.2",
     "ws": "^8.2.3"
   }
 }
