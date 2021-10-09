@@ -7,7 +7,7 @@
     "example": "example"
   },
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "node src/server.js"
   },
   "repository": {
     "type": "git",
