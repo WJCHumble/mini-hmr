@@ -1,18 +1,20 @@
 const http = require("http")
 const chokidar = require('chokidar');
 const path = require("path")
-const fs = require("fs")
 const { createWebSocketServer } = require("./ws")
+const serveStatic = require('serve-static')
+const finalhandler = require('finalhandler')
+
+const rootDir = path.join(__dirname, "../example/")
+const serve = serveStatic(rootDir)
 
 function createServer() {
-	const httpServer = http.createServer(function(request, response) {
-		const file = fs.readFileSync(path.join(__dirname, "../example/index.html"))
-		response.writeHead(200, {'Content-Type': "text/html"})
-		response.end(file.toString())
+	const httpServer = http.createServer(function(req, res) {
+		serve(req, res, finalhandler(req, res))
 	})
 	const wss = createWebSocketServer(httpServer)
 
-	const watcher = chokidar.watch(path.join(__dirname, "../example/"))
+	const watcher = chokidar.watch(path.join(rootDir))
 	watcher.on("change", async (file) => {
 		wss.send({
 			type: "full-reload",
@@ -22,7 +24,7 @@ function createServer() {
 
 	httpServer.listen(3000)
 	console.log("[min-hmr] server connected.")
-	console.log("[min-hmr] listen 3000.")
+	console.log("> Local http://localhost:3000")
 }
 
 createServer()
