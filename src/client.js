@@ -14,9 +14,7 @@ function handleMessage(payload) {
 	}
 }
 
-function fetchUpdate() {
-
-}
+function fetchUpdate() {}
 
 const sheetsMap = new Map()
 function updateStyle(id, content) {

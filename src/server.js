@@ -4,9 +4,12 @@ const path = require("path")
 const { createWebSocketServer } = require("./ws")
 const serveStatic = require('serve-static')
 const finalhandler = require('finalhandler')
+const connect = require('connect');
 
 const rootDir = path.join(__dirname, "../example/")
 const serve = serveStatic(rootDir)
+// TODO: use middlewares for server
+const middlewares = connect()
 
 function createServer() {
 	const httpServer = http.createServer(function(req, res) {
