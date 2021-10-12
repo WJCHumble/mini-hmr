@@ -13,9 +13,3 @@ function handleMessage(payload) {
 		}
 	}
 }
-
-function fetchUpdate() {
-
-}
-
-function updateStyle() {}
