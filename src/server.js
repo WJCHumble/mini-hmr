@@ -8,13 +8,22 @@ const connect = require('connect');
 
 const rootDir = path.join(__dirname, "../example/")
 const serve = serveStatic(rootDir)
-// TODO: use middlewares for server
-const middlewares = connect()
+// use middlewares for server
+const app = connect()
 
 function createServer() {
-	const httpServer = http.createServer(function(req, res) {
+	app.use(function(req, res, next) {
 		serve(req, res, finalhandler(req, res))
+		next()
 	})
+	app.use(function(req, res, next) {
+		if (req.url.includes("@")) {
+			req.url = "./client.js"
+			next(req, res, next)
+		}
+		next()
+	})
+	const httpServer = http.createServer(app)
 	const wss = createWebSocketServer(httpServer)
 
 	const watcher = chokidar.watch(path.join(rootDir))
