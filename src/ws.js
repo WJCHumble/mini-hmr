@@ -1,7 +1,7 @@
-const { WebSocket } = require("ws")
+import WebSocket, { WebSocketServer }  from "ws"
 
-const createWebSocketServer = (wsServer) => {
-	const wss = new WebSocket.Server({ noServer: true })
+export const createWebSocketServer = (wsServer) => {
+	const wss = new WebSocketServer({ noServer: true })
 	wsServer.on('upgrade', function upgrade(req, socket, head) {
 		if (req.headers['sec-websocket-protocol'] === "min-hmr") {
 			wss.handleUpgrade(req, socket, head, (ws) => {
@@ -31,5 +31,3 @@ const createWebSocketServer = (wsServer) => {
 		}
 	}
 }
-
-module.exports = { createWebSocketServer }

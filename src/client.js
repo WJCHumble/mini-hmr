@@ -28,7 +28,6 @@ function updateStyle(id, content) {
 	}
 }
 
-// TODO: UMD Support
-module.exports = {
+export default {
 	updateStyle
 }

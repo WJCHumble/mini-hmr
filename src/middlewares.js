@@ -1,5 +1,5 @@
 function baseMiddleware({config}) {}
 
-module.exports = {
+export default {
 	baseMiddleware
 }

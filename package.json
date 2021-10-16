@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Vite is very popular, so I created this repo, which shows how hmr works in vite.",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "dev": "node src/server.js"
+    "dev": "node src/server.js --input-type=module"
   },
   "repository": {
     "type": "git",
