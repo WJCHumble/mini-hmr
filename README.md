@@ -1,6 +1,6 @@
-## mini-hmr
+## Mini-hmr
 
-Vite is very popular, so I created this repo, which shows how hmr works in vite.
+Vite is very popular now, so I created this repo, which shows how hmr works in vite.
 
 ## Feature
 
