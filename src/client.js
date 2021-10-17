@@ -6,18 +6,21 @@ socket.addEventListener("message", async ({ data }) => {
 function handleMessage(payload) {
 	switch (payload.type) {
 		case 'update':
+			// TODO: fetchUpdate Module
+			break;
 		case 'full-reload': 
 			window.location.reload()
+			break;
 		default: {
 			return payload
 		}
 	}
 }
 
-function fetchUpdate() {}
+function fetchUpdate(path) {}
 
 const sheetsMap = new Map()
-function updateStyle(id, content) {
+export const updateStyle = (id, content) => {
 	let	style = sheetsMap.get(id)
 	if (!style) {
 		style = new CSSStyleSheet()
@@ -26,8 +29,4 @@ function updateStyle(id, content) {
 	} else {
 		style.replaceSync(content)
 	}
-}
-
-export default {
-	updateStyle
 }
