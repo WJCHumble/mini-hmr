@@ -23,11 +23,9 @@
   "homepage": "https://github.com/WJCHumble/mini-hmr#readme",
   "dependencies": {
     "chokidar": "^3.5.2",
+    "connect": "^3.7.0",
     "finalhandler": "^1.1.2",
     "serve-static": "^1.14.1",
     "ws": "^8.2.3"
-  },
-  "devDependencies": {
-    "connect": "^3.7.0"
   }
 }
