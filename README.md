@@ -6,4 +6,4 @@ Vite is very popular now, so I created this repo, which shows how hmr works in v
 
 - Simple Dev Server
 - Live reload
-- Support for css file's hmr
+- Support for css file's hmr（WIP）
