@@ -1,14 +1,21 @@
 export const handleHMRUpdate = (file, wss) => {
+	const timestamp = Date.now()
 	if (file.endsWith(".css")) {
 		wss.send({
 			type: "update",
-			updates: [file]
+			updates: [{
+				path: file,
+				timestamp,
+			}]
 		})
 		return
 	}
 
 	wss.send({
 		type: "full-reload",
-		updates: [file]
+		updates: [{
+			path: file,
+			timestamp
+		}]
 	})
 }

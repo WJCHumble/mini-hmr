@@ -21,17 +21,18 @@ export const transformAliasMiddleware = (req, res, next) => {
 }
 
 export const transformCssMiddleware = (req, res) => {
-	if (req.url.endsWith(".css")) {
-		const absolutePath = path.join(rootDir, req.url)
-		const css = fs.readFileSync(absolutePath).toString()
-		const code = `import { updateStyle } from "/@vite/client.js"
+	if (!req.url.includes(".css")) return
+	
+	const [relativePath, query] = req.url.split("?")
+	const absolutePath = path.join(rootDir, relativePath)
+	const css = fs.readFileSync(absolutePath).toString()
+	const code = `import { updateStyle } from "/@vite/client.js"
 const id = "${absolutePath}"
 const css = "${css.replace(/\n/g, "")}"
 updateStyle(id, css)
 export default css
-		`
+	`
 
-		res.setHeader('Content-Type', alias["js"])
-		res.end(code)
-	}
+	res.setHeader('Content-Type', alias["js"])
+	res.end(code)
 }

@@ -6,4 +6,12 @@ Vite is very popular now, so I created this repo, which shows how hmr works in v
 
 - Simple Dev Server
 - Live reload
-- Support for css file's hmr（WIP）
+- Support for css file's hmr
+
+## Usage
+
+1. run `npm i`
+
+2. run `npm run dev`
+
+And then dev server will watch the file change in `example` directory.

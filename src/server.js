@@ -26,6 +26,11 @@ function createServer() {
 
 	const watcher = chokidar.watch(path.join(rootDir))
 	watcher.on("change", async (file) => {
+		file = path.relative(rootDir, file)
+		/**
+		 * acceptedPath 相对路径
+		 * path 相对路径
+		 */
 		handleHMRUpdate(file, wss)
 	})
 

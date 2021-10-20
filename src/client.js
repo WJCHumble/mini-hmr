@@ -2,11 +2,12 @@ const socket = new WebSocket("ws://localhost:3000", "min-hmr")
 socket.addEventListener("message", async ({ data }) => {
 	handleMessage(JSON.parse(data))
 })
-// TODO: 单个模块代码的改变
 function handleMessage(payload) {
 	switch (payload.type) {
 		case 'update':
-			// TODO: fetchUpdate Module
+			payload.updates.forEach((update) => {
+				fetchUpdate(update)
+			})
 			break;
 		case 'full-reload': 
 			window.location.reload()
@@ -17,7 +18,15 @@ function handleMessage(payload) {
 	}
 }
 
-function fetchUpdate(path) {}
+async function fetchUpdate({ path, timestamp }) {
+	const [relativePath, query] = path.split("?")
+	try {
+		const url = `/${relativePath}?t=${timestamp}${query ? `&${query}` : ''}`
+		await import(url)
+	} catch (e) {
+		console.error(e)
+	}
+}
 
 const sheetsMap = new Map()
 export const updateStyle = (id, content) => {
