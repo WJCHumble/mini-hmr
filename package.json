@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/WJCHumble/mini-hmr#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "chokidar": "^3.5.2",
     "connect": "^3.7.0",
     "finalhandler": "^1.1.2",

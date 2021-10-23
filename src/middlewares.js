@@ -12,7 +12,8 @@ const alias = {
 export const transformAliasMiddleware = (req, res, next) => {
 	// transform "@" alias import
 	if (req.url.includes("@")) {
-		const code = fs.readFileSync(path.join(__dirname, "./src/client.js")).toString()
+		const relativePath = req.url.replace(/\@vite/g, "src")
+		const code = fs.readFileSync(path.join(__dirname, relativePath)).toString()
 		res.setHeader('Content-Type', alias["js"])
 		res.end(code)
 	}

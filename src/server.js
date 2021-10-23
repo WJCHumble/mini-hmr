@@ -7,9 +7,12 @@ import finalhandler from "finalhandler"
 import connect from "connect"
 import { handleHMRUpdate } from "./hmr.js"
 import { transformAliasMiddleware, transformCssMiddleware } from "./middlewares.js"
+import chalk from "chalk"
 
 export const __dirname = path.resolve();
-export const rootDir = path.join(__dirname, "./example/")
+export const rootDir = path.join(__dirname, "./public/")
+
+const port = 3000
 const serve = serveStatic(rootDir)
 // use middlewares for server
 const app = connect()
@@ -30,9 +33,9 @@ function createServer() {
 		handleHMRUpdate(file, wss)
 	})
 
-	httpServer.listen(3000)
+	httpServer.listen(port)
 	console.log("[min-hmr] server connected.")
-	console.log("> Local http://localhost:3000")
+	console.log(`> Local: ${chalk.cyan(`http://localhost:${port}`)}`)
 }
 
 createServer()

@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://localhost:3000", "min-hmr")
+const socket = new WebSocket(`ws://localhost:3000`, "min-hmr")
 socket.addEventListener("message", async ({ data }) => {
 	handleMessage(JSON.parse(data))
 })
