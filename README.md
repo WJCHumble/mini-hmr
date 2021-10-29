@@ -14,4 +14,4 @@ Vite is very popular now, so I created this repo, which shows how hmr works in v
 
 2. run `npm run dev`
 
-And then dev server will watch the file change in `example` directory.
+And then dev server will watch the file change in `public` directory.
