@@ -12,7 +12,7 @@ import chalk from "chalk"
 export const __dirname = path.resolve();
 export const rootDir = path.join(__dirname, "./public/")
 
-const port = 3000
+export const port = 3000
 const serve = serveStatic(rootDir)
 // use middlewares for server
 const app = connect()

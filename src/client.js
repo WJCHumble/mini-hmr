@@ -1,7 +1,8 @@
-const socket = new WebSocket(`ws://localhost:3000`, "min-hmr")
+const socket = new WebSocket("ws://localhost:__HMR_PORT__", "min-hmr")
 socket.addEventListener("message", async ({ data }) => {
 	handleMessage(JSON.parse(data))
 })
+
 function handleMessage(payload) {
 	switch (payload.type) {
 		case 'update':

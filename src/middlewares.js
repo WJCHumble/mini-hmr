@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import { __dirname, rootDir } from "./server.js"
+import { __dirname, rootDir, port } from "./server.js"
 
 const alias = {
 	js: 'application/javascript',
@@ -11,9 +11,16 @@ const alias = {
 
 export const transformAliasMiddleware = (req, res, next) => {
 	// transform "@" alias import
-	if (req.url.includes("@")) {
-		const relativePath = req.url.replace(/\@vite/g, "src")
-		const code = fs.readFileSync(path.join(__dirname, relativePath)).toString()
+	const requestUrl = req.url
+	if (requestUrl.includes("@")) {
+		const relativePath = requestUrl.replace(/\@vite/g, "src")
+		let code = fs.readFileSync(path.join(__dirname, relativePath)).toString()
+
+		if (requestUrl.includes("client.js")) {
+			// replace __HMR_PORT__
+			code = code.replace("__HMR_PORT__", port)
+		}
+
 		res.setHeader('Content-Type', alias["js"])
 		res.end(code)
 	}
