@@ -4,9 +4,9 @@ import { __dirname, rootDir, port } from "./server.js"
 
 const alias = {
 	js: 'application/javascript',
-  css: 'text/css',
-  html: 'text/html',
-  json: 'application/json'
+	css: 'text/css',
+	html: 'text/html',
+	json: 'application/json'
 }
 
 export const transformAliasMiddleware = (req, res, next) => {
