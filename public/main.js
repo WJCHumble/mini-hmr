@@ -1,4 +1,3 @@
-// TODO: 怎么解决 css 文件的加载
 import './style.css';
 
 document.querySelector('#app').innerHTML = `
